@@ -1,10 +1,9 @@
-//import liraries
 import React from "react";
 import { Image, SafeAreaView, View } from "react-native";
 import tw from "tailwind-react-native-classnames";
 import NavOptions from "../components/NavOptions";
 
-const HomeScreen = () => {
+const EatScreen = () => {
   return (
     <SafeAreaView style={tw`bg-white h-full`}>
       <View style={tw`p-5`}>
@@ -18,5 +17,4 @@ const HomeScreen = () => {
   );
 };
 
-//make this component available to the app
-export default HomeScreen;
+export default EatScreen;
