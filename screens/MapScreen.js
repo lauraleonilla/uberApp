@@ -1,19 +1,34 @@
 import React from "react";
-import { Image, SafeAreaView, View } from "react-native";
+import { View } from "react-native";
 import tw from "tailwind-react-native-classnames";
-import NavOptions from "../components/NavOptions";
+import Map from "../components/Map";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import NavigateCard from "../components/NavigateCard";
+import RideOptionsCard from "../components/RideOptionsCard";
 
 const MapScreen = () => {
+  const Stack = createNativeStackNavigator();
+
   return (
-    <SafeAreaView style={tw`bg-white h-full`}>
-      <View style={tw`p-5`}>
-        <Image
-          style={{ width: 100, height: 100, resizeMode: "contain" }}
-          source={{ uri: "https://links.papareact.com/gzs" }}
-        />
-        <NavOptions />
+    <View style={tw`bg-white h-full`}>
+      <View style={tw`h-1/2`}>
+        <Map />
       </View>
-    </SafeAreaView>
+      <View style={tw`h-1/2`}>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="NavigateCard"
+            component={NavigateCard}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="RideOptionsCard"
+            component={RideOptionsCard}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </View>
+    </View>
   );
 };
 

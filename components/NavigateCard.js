@@ -1,23 +1,28 @@
 //import liraries
-import React from "react";
-import { Image, SafeAreaView, View } from "react-native";
+import React, { Component } from "react";
+import { SafeAreaView, View, Text, StyleSheet } from "react-native";
 import tw from "tailwind-react-native-classnames";
-import NavOptions from "../components/NavOptions";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { GOOGLE_MAPS_KEY } from "@env";
-import { useDispatch } from "react-redux";
-import { setDestination, setOrigin } from "../slices/navSlice";
 
-const HomeScreen = () => {
-  const dispatch = useDispatch();
+const NavigateCard = () => {
   return (
-    <SafeAreaView style={tw`bg-white h-full`}>
-      <View style={tw`p-5`}>
+    <SafeAreaView style={tw`bg-white flex-1`}>
+      <Text style={tw`text-center py-5 text-xl`}>NavigateCard</Text>
+      <View style={tw`border-t border-gray-200 flex-shrink`}>
         <GooglePlacesAutocomplete
           nearbyPlacesAPI="GooglePlacesSearch"
           debounce={400}
           placeholder="Where from?"
-          styles={{ container: { flex: 0 }, textInput: { fontSize: 18 } }}
+          styles={{
+            container: { flex: 0, backgroundColor: "white", paddingTop: 20 },
+            textInput: {
+              fontSize: 18,
+              borderRadius: 0,
+              backgroundColor: "#DDDDDF",
+            },
+            textInputContainer: { paddingHorizontal: 20, paddingBottom: 0 },
+          }}
           minLength={2}
           query={{ key: GOOGLE_MAPS_KEY, language: "en" }}
           enablePoweredByContainer={false}
@@ -33,15 +38,9 @@ const HomeScreen = () => {
           fetchDetails={true}
           returnKeyType={"search"}
         />
-        <Image
-          style={{ width: 100, height: 100, resizeMode: "contain" }}
-          source={{ uri: "https://links.papareact.com/gzs" }}
-        />
-        <NavOptions />
       </View>
     </SafeAreaView>
   );
 };
 
-//make this component available to the app
-export default HomeScreen;
+export default NavigateCard;
