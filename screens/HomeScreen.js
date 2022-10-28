@@ -3,6 +3,7 @@ import React from "react";
 import { Image, SafeAreaView, View } from "react-native";
 import tw from "tailwind-react-native-classnames";
 import NavOptions from "../components/NavOptions";
+import NavFavourites from "../components/NavFavourites";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { GOOGLE_MAPS_KEY } from "@env";
 import { useDispatch } from "react-redux";
@@ -38,6 +39,7 @@ const HomeScreen = () => {
           source={{ uri: "https://links.papareact.com/gzs" }}
         />
         <NavOptions />
+        <NavFavourites />
       </View>
     </SafeAreaView>
   );
