@@ -23,7 +23,7 @@ export default function App() {
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             keyboardVerticalOffset={Platform.OS === "ios" ? -64 : 0}
           >
-            <Stack.Navigator>
+            <Stack.Navigator screenOptions={{ headerShown: false }}>
               <Stack.Screen
                 name="HomeScreen"
                 component={HomeScreen}

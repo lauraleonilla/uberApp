@@ -15,11 +15,13 @@ import {
   selectDestination,
   selectTravelTimeInformation,
 } from "../slices/navSlice";
+import { current } from "@reduxjs/toolkit";
 
 const RideOptionsCard = () => {
   const navigation = useNavigation();
   const [selected, setSelected] = useState(null);
   const travelTimeInformation = useSelector(selectTravelTimeInformation);
+  const SURGE_CHARGE_RATE = 1.5;
   const data = [
     {
       id: "uberx123",
@@ -50,7 +52,7 @@ const RideOptionsCard = () => {
           <FontAwesome name="chevron-left" />
         </TouchableOpacity>
         <Text style={tw`text-center py-5 text-xl`}>
-          Select a ride - {travelTimeInformation?.distance.text}
+          Select a ride - {travelTimeInformation?.distance?.text}
         </Text>
       </View>
       <FlatList
@@ -69,13 +71,23 @@ const RideOptionsCard = () => {
             />
             <View style={tw`-ml-6`}>
               <Text style={tw`text-xl font-semibold`}>{title}</Text>
-              <Text>Travel time: </Text>
+              <Text>{travelTimeInformation?.duration?.text} travel time</Text>
             </View>
-            <Text style={tw`text-xl`}>100€</Text>
+            <Text style={tw`text-xl`}>
+              {new Intl.NumberFormat("en-gb", {
+                style: "currency",
+                currency: "GBP",
+              }).format(
+                (travelTimeInformation?.duration.value *
+                  SURGE_CHARGE_RATE *
+                  multiplier) /
+                  100
+              )}
+            </Text>
           </TouchableOpacity>
         )}
       />
-      <View>
+      <View style={tw`mt-auto border-t border-gray-200`}>
         <TouchableOpacity
           disabled={!selected}
           style={tw`bg-black m-3 py-3 ${!selected && "bg-gray-300"}`}
