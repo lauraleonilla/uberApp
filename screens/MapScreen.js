@@ -19,12 +19,12 @@ const MapScreen = () => {
           <Stack.Screen
             name="NavigateCard"
             component={NavigateCard}
-            options={{ headerShown: false, gestureEnabled: true }}
+            options={{ headerShown: false }}
           />
           <Stack.Screen
             name="RideOptionsCard"
             component={RideOptionsCard}
-            options={{ headerShown: false, gestureEnabled: false }}
+            options={{ headerShown: false }}
           />
         </Stack.Navigator>
       </View>

@@ -27,17 +27,17 @@ export default function App() {
               <Stack.Screen
                 name="HomeScreen"
                 component={HomeScreen}
-                options={{ headerShown: false, gestureEnabled: true }}
+                options={{ headerShown: false }}
               />
               <Stack.Screen
                 name="MapScreen"
                 component={MapScreen}
-                options={{ headerShown: false, gestureEnabled: true }}
+                options={{ headerShown: false }}
               />
               <Stack.Screen
                 name="EatScreen"
                 component={EatScreen}
-                options={{ headerShown: false, gestureEnabled: true }}
+                options={{ headerShown: false }}
               />
             </Stack.Navigator>
             <StatusBar style="auto" />
