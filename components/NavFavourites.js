@@ -18,17 +18,19 @@ const data = [
     destination: "Code street 13",
   },
 ];
-const SeparatorComponent = () => {
-  return <View style={[tw`bg-gray-200`, { height: 0.5 }]} />;
-};
 
 const NavFavourites = () => {
   const navigation = useNavigation();
+
+  const renderSeparator = () => {
+    return <View style={[tw`bg-gray-200`, { height: 0.5 }]} />;
+  };
+
   return (
     <FlatList
       data={data}
       keyExtractor={(item) => item.id}
-      ItemSeparatorComponent={<SeparatorComponent />}
+      ItemSeparatorComponent={() => renderSeparator()}
       renderItem={({ item }) => (
         <TouchableOpacity
           onPress={() => navigation.navigate(item.screen)}
