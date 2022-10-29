@@ -1,10 +1,8 @@
 import React from "react";
-import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
+import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import tw from "tailwind-react-native-classnames";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { useSelector } from "react-redux";
-import { selectOrigin } from "../slices/navSlice";
 
 const data = [
   {
@@ -20,17 +18,17 @@ const data = [
     destination: "Code street 13",
   },
 ];
+const SeparatorComponent = () => {
+  return <View style={[tw`bg-gray-200`, { height: 0.5 }]} />;
+};
 
 const NavFavourites = () => {
   const navigation = useNavigation();
-  const origin = useSelector(selectOrigin);
   return (
     <FlatList
       data={data}
       keyExtractor={(item) => item.id}
-      ItemSeparatorComponent={() => (
-        <View style={[tw`bg-gray-200`, { height: 0.5 }]} />
-      )}
+      ItemSeparatorComponent={<SeparatorComponent />}
       renderItem={({ item }) => (
         <TouchableOpacity
           onPress={() => navigation.navigate(item.screen)}

@@ -1,17 +1,18 @@
+import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { KeyboardAvoidingView, Platform } from "react-native";
 import { Provider } from "react-redux";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import tw from "tailwind-react-native-classnames";
 import { store } from "./store";
 import HomeScreen from "./screens/HomeScreen";
 import EatScreen from "./screens/EatScreen";
 import MapScreen from "./screens/MapScreen";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { NavigationContainer } from "@react-navigation/native";
 import "react-native-gesture-handler";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import tw from "tailwind-react-native-classnames";
 
-export default function App() {
+const App = () => {
   const Stack = createNativeStackNavigator();
 
   return (
@@ -40,10 +41,12 @@ export default function App() {
                 options={{ headerShown: false }}
               />
             </Stack.Navigator>
-            <StatusBar style="auto" />
+            <StatusBar />
           </KeyboardAvoidingView>
         </SafeAreaProvider>
       </NavigationContainer>
     </Provider>
   );
-}
+};
+
+export default App;

@@ -1,15 +1,14 @@
-import React, { Component, useEffect, useRef } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, { useEffect, useRef } from "react";
 import MapView, { Marker } from "react-native-maps";
 import { useDispatch, useSelector } from "react-redux";
 import tw from "tailwind-react-native-classnames";
 import MapViewDirections from "react-native-maps-directions";
+import { GOOGLE_MAPS_KEY } from "@env";
 import {
   selectDestination,
   selectOrigin,
   setTravelTimeInformation,
 } from "../slices/navSlice";
-import { GOOGLE_MAPS_KEY } from "@env";
 
 const Map = () => {
   const origin = useSelector(selectOrigin);
@@ -27,7 +26,7 @@ const Map = () => {
   }, [origin, destination]);
 
   useEffect(() => {
-    if (!origin | !destination) {
+    if (!origin || !destination) {
       return;
     }
     const getTravelTime = async () => {
@@ -40,6 +39,7 @@ const Map = () => {
         });
     };
     getTravelTime();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [origin, destination, GOOGLE_MAPS_KEY]);
 
   return (

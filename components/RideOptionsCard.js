@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -11,11 +11,7 @@ import tw from "tailwind-react-native-classnames";
 import { FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
-import {
-  selectDestination,
-  selectTravelTimeInformation,
-} from "../slices/navSlice";
-import { current } from "@reduxjs/toolkit";
+import { selectTravelTimeInformation } from "../slices/navSlice";
 
 const RideOptionsCard = () => {
   const navigation = useNavigation();
@@ -42,6 +38,8 @@ const RideOptionsCard = () => {
       image: "https://links.papareact.com/7pf",
     },
   ];
+  const travelTimeInformationValue = travelTimeInformation?.duration?.value;
+
   return (
     <SafeAreaView style={tw`flex-1 bg-white flex-grow`}>
       <View>
@@ -78,9 +76,7 @@ const RideOptionsCard = () => {
                 style: "currency",
                 currency: "GBP",
               }).format(
-                (travelTimeInformation?.duration.value *
-                  SURGE_CHARGE_RATE *
-                  multiplier) /
+                (travelTimeInformationValue * SURGE_CHARGE_RATE * multiplier) /
                   100
               )}
             </Text>

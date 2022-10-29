@@ -1,12 +1,12 @@
-//import liraries
+// import liraries
 import React from "react";
 import { Image, SafeAreaView, View } from "react-native";
 import tw from "tailwind-react-native-classnames";
-import NavOptions from "../components/NavOptions";
-import NavFavourites from "../components/NavFavourites";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { GOOGLE_MAPS_KEY } from "@env";
 import { useDispatch } from "react-redux";
+import NavFavourites from "../components/NavFavourites";
+import NavOptions from "../components/NavOptions";
 import { setDestination, setOrigin } from "../slices/navSlice";
 
 const HomeScreen = () => {
@@ -31,8 +31,8 @@ const HomeScreen = () => {
             );
             dispatch(setDestination(null));
           }}
-          fetchDetails={true}
-          returnKeyType={"search"}
+          fetchDetails
+          returnKeyType="search"
         />
         <Image
           style={{ width: 100, height: 100, resizeMode: "contain" }}
@@ -45,5 +45,5 @@ const HomeScreen = () => {
   );
 };
 
-//make this component available to the app
+// make this component available to the app
 export default HomeScreen;

@@ -1,5 +1,5 @@
-//import liraries
-import React, { Component } from "react";
+// import liraries
+import React from "react";
 import { SafeAreaView, View, Text, TouchableOpacity } from "react-native";
 import tw from "tailwind-react-native-classnames";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
@@ -7,7 +7,7 @@ import { GOOGLE_MAPS_KEY } from "@env";
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch } from "react-redux";
-import { setDestination, setOrigin } from "../slices/navSlice";
+import { setDestination } from "../slices/navSlice";
 import NavFavourites from "./NavFavourites";
 
 const NavigateCard = () => {
@@ -42,8 +42,8 @@ const NavigateCard = () => {
             );
             navigation.navigate("RideOptionsCard");
           }}
-          fetchDetails={true}
-          returnKeyType={"search"}
+          fetchDetails
+          returnKeyType="search"
         />
         <NavFavourites />
       </View>
